@@ -45,7 +45,9 @@ namespace MoMA.Analyzer
 					//Gets all methods of the current type
 					foreach (MethodDefinition method in type.Methods)
 						if ((method.Attributes & MethodAttributes.PInvokeImpl) == MethodAttributes.PInvokeImpl)
-							data[method.ToString ()] = new Method (method.ToString (), method.PInvokeInfo.Module.Name);
+						{
+							data[method.ToString()] = new Method(method.ToString(),string.Format("{0} ({1})", method.PInvokeInfo.Module.Name, method.PInvokeInfo.EntryPoint));
+						}
 				}
 			}	
 		}
